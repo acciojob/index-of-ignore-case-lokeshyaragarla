@@ -1,16 +1,21 @@
-function indexOfIgnoreCase(str: string, subStr: string): number {
-  // Convert both strings to lowercase for case-insensitive comparison
-  const lowerStr = str.toLowerCase();
-  const lowerSubStr = subStr.toLowerCase();
+function indexOfIgnoreCase(str, subStr) {
+    // Handle edge cases
+    if (subStr === "") {
+        return 0; // If subStr is empty, return 0
+    }
+    if (str === "" || subStr.length > str.length) {
+        return -1; // If str is empty or subStr is longer than str, return -1
+    }
 
-  // Use built-in indexOf for efficient search
-  return lowerStr.indexOf(lowerSubStr);
+    // Convert both strings to lower case for case-insensitive comparison
+    const lowerStr = str.toLowerCase();
+    const lowerSubStr = subStr.toLowerCase();
+
+    // Find the index of the first occurrence of lowerSubStr in lowerStr
+    return lowerStr.indexOf(lowerSubStr);
 }
 
-// ✅ Test cases
-console.log(indexOfIgnoreCase("Hello World", "world")); // ➞ 6
-console.log(indexOfIgnoreCase("apple", "Ple"));         // ➞ 2
-console.log(indexOfIgnoreCase("test", "aaa"));          // ➞ -1
-console.log(indexOfIgnoreCase("", ""));                 // ➞ 0 (empty string is always found at index 0)
-console.log(indexOfIgnoreCase("abc", ""));              // ➞ 0
-console.log(indexOfIgnoreCase("", "a"));                // ➞ -1
+// Example usage:
+console.log(indexOfIgnoreCase("Hello World", "world")); // Output: 6
+console.log(indexOfIgnoreCase("apple", "Ple")); // Output: 2
+console.log(indexOfIgnoreCase("test", "aaa")); // Output: -1
